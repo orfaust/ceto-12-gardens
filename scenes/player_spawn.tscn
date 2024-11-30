@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk1awu1884xan"]
+
+[ext_resource type="Texture2D" uid="uid://c1gr2uskfw6ee" path="res://assets/sprites/ceto.png" id="1_kdrvr"]
+[ext_resource type="Script" path="res://scripts/player_spawn.gd" id="1_t2ay5"]
+
+[node name="PlayerSpawn" type="Node2D"]
+script = ExtResource("1_t2ay5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -12)
+texture = ExtResource("1_kdrvr")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)

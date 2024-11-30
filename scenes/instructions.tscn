@@ -1,0 +1,176 @@
+[gd_scene load_steps=2 format=3 uid="uid://blmx6b1qtor3b"]
+
+[ext_resource type="FontFile" uid="uid://c7le2efbjcl6u" path="res://assets/fonts/PixelOperator8.ttf" id="1_755v1"]
+
+[node name="Instructions" type="Node2D"]
+visible = false
+
+[node name="Danger" type="Label" parent="."]
+offset_left = -464.0
+offset_top = 80.0
+offset_right = -319.0
+offset_bottom = 98.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+theme_override_fonts/font = ExtResource("1_755v1")
+theme_override_font_sizes/font_size = 8
+text = "Where are you going???
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Movement" type="Panel" parent="."]
+offset_left = -40.0
+offset_top = -32.0
+offset_right = 114.0
+offset_bottom = 6.0
+metadata/_edit_group_ = true
+
+[node name="Background" type="ColorRect" parent="Movement"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.905882, 0.196078, 0.466667, 1)
+
+[node name="Label" type="Label" parent="Movement"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -19.5
+offset_right = 71.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+theme_override_fonts/font = ExtResource("1_755v1")
+theme_override_font_sizes/font_size = 8
+text = "WALK > Left, Right, A, D
+JUMP > Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Enemies1" type="Panel" parent="."]
+offset_left = 248.0
+offset_top = -32.0
+offset_right = 434.0
+offset_bottom = 4.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+metadata/_edit_group_ = true
+
+[node name="Background" type="ColorRect" parent="Enemies1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.905882, 0.196078, 0.466667, 1)
+
+[node name="Label" type="Label" parent="Enemies1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+theme_override_fonts/font = ExtResource("1_755v1")
+theme_override_font_sizes/font_size = 8
+text = "Enemies are invisible.
+Ceto must not touch them!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Enemies2" type="Panel" parent="."]
+offset_left = 536.0
+offset_top = -56.0
+offset_right = 746.0
+offset_bottom = -12.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+metadata/_edit_group_ = true
+
+[node name="Background" type="ColorRect" parent="Enemies2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.905882, 0.196078, 0.466667, 1)
+
+[node name="Label" type="Label" parent="Enemies2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+theme_override_fonts/font = ExtResource("1_755v1")
+theme_override_font_sizes/font_size = 8
+text = "To see the enemies, Ceto needs
+to drink the purple potion.
+Can you find it?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Potion" type="Panel" parent="."]
+offset_left = 770.0
+offset_top = -212.0
+offset_right = 928.0
+offset_bottom = -192.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+metadata/_edit_group_ = true
+
+[node name="Background" type="ColorRect" parent="Potion"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.905882, 0.196078, 0.466667, 1)
+
+[node name="Label" type="Label" parent="Potion"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+theme_override_fonts/font = ExtResource("1_755v1")
+theme_override_font_sizes/font_size = 8
+text = "You found the potion!"
+horizontal_alignment = 1
+vertical_alignment = 1
