@@ -1,176 +1,291 @@
-[gd_scene load_steps=2 format=3 uid="uid://blmx6b1qtor3b"]
+[gd_scene load_steps=16 format=3 uid="uid://blmx6b1qtor3b"]
 
-[ext_resource type="FontFile" uid="uid://c7le2efbjcl6u" path="res://assets/fonts/PixelOperator8.ttf" id="1_755v1"]
+[ext_resource type="Texture2D" uid="uid://c2hd627gafe1r" path="res://assets/sprites/four-seasons-tileset.png" id="1_uniej"]
+[ext_resource type="Texture2D" uid="uid://c1xy35pjys0ck" path="res://assets/sprites/slime_purple.png" id="2_xcpjb"]
+[ext_resource type="Texture2D" uid="uid://cf8sr5p2kni10" path="res://assets/sprites/items_.png" id="3_icr1p"]
+[ext_resource type="Texture2D" uid="uid://dcnwnglqjlt66" path="res://assets/sprites/croquette.png" id="4_2s27y"]
+[ext_resource type="Texture2D" uid="uid://c1gr2uskfw6ee" path="res://assets/sprites/ceto.png" id="5_6qaku"]
+[ext_resource type="Texture2D" uid="uid://d4kf63p45dbke" path="res://assets/sprites/pillow.png" id="6_p8y7h"]
 
-[node name="Instructions" type="Node2D"]
-visible = false
+[sub_resource type="AtlasTexture" id="AtlasTexture_16nxq"]
+atlas = ExtResource("2_xcpjb")
+region = Rect2(0, 24, 24, 24)
 
-[node name="Danger" type="Label" parent="."]
-offset_left = -464.0
-offset_top = 80.0
-offset_right = -319.0
-offset_bottom = 98.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
-theme_override_fonts/font = ExtResource("1_755v1")
-theme_override_font_sizes/font_size = 8
-text = "Where are you going???
-"
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol2do"]
+atlas = ExtResource("2_xcpjb")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vybjb"]
+atlas = ExtResource("2_xcpjb")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nwto"]
+atlas = ExtResource("2_xcpjb")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe1uq"]
+atlas = ExtResource("2_xcpjb")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvtyw"]
+atlas = ExtResource("2_xcpjb")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b160o"]
+atlas = ExtResource("2_xcpjb")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbmdc"]
+atlas = ExtResource("2_xcpjb")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2f3er"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16nxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol2do")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vybjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nwto")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe1uq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvtyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b160o")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_qbmdc")
+}],
+"loop": true,
+"name": &"melt",
+"speed": 5.0
+}]
+
+[node name="Instructions" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.122994, 0.269875, 0.227674, 1)
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="spacer2" type="Label" parent="Container/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="Movement" type="Panel" parent="."]
-offset_left = -40.0
-offset_top = -32.0
-offset_right = 114.0
-offset_bottom = 6.0
-metadata/_edit_group_ = true
-
-[node name="Background" type="ColorRect" parent="Movement"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.905882, 0.196078, 0.466667, 1)
-
-[node name="Label" type="Label" parent="Movement"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -71.0
-offset_top = -19.5
-offset_right = 71.0
-offset_bottom = 19.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
-theme_override_fonts/font = ExtResource("1_755v1")
-theme_override_font_sizes/font_size = 8
-text = "WALK > Left, Right, A, D
-JUMP > Space"
+[node name="Title2" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+theme_override_font_sizes/font_size = 24
+text = "Game instructions"
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="Enemies1" type="Panel" parent="."]
-offset_left = 248.0
-offset_top = -32.0
-offset_right = 434.0
-offset_bottom = 4.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
-metadata/_edit_group_ = true
+[node name="Potion" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+text = "* First find the potion! Ceto will see the slimes when he drinks it."
 
-[node name="Background" type="ColorRect" parent="Enemies1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.905882, 0.196078, 0.466667, 1)
+[node name="Sprite2D" type="Sprite2D" parent="Container/HBoxContainer/VBoxContainer/Potion"]
+position = Vector2(843, -2)
+scale = Vector2(3, 3)
+texture = ExtResource("1_uniej")
+region_enabled = true
+region_rect = Rect2(116, 130, 8, 14)
 
-[node name="Label" type="Label" parent="Enemies1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
-theme_override_fonts/font = ExtResource("1_755v1")
-theme_override_font_sizes/font_size = 8
-text = "Enemies are invisible.
-Ceto must not touch them!"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Slimes2" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+text = "* Do not touch the slimes! Beware slimes are there even if you don't see them."
 
-[node name="Enemies2" type="Panel" parent="."]
-offset_left = 536.0
-offset_top = -56.0
-offset_right = 746.0
-offset_bottom = -12.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
-metadata/_edit_group_ = true
+[node name="Sprite2D2" type="Sprite2D" parent="Container/HBoxContainer/VBoxContainer/Slimes2"]
+position = Vector2(1002, 8)
+scale = Vector2(3, 3)
+texture = ExtResource("2_xcpjb")
+region_enabled = true
+region_rect = Rect2(29, 35, 14, 13)
 
-[node name="Background" type="ColorRect" parent="Enemies2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.905882, 0.196078, 0.466667, 1)
+[node name="Slimes3" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+text = "* If Ceto touches a slime he'll lose 1 heart and 100 points."
 
-[node name="Label" type="Label" parent="Enemies2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
-theme_override_fonts/font = ExtResource("1_755v1")
-theme_override_font_sizes/font_size = 8
-text = "To see the enemies, Ceto needs
-to drink the purple potion.
-Can you find it?"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Sprite2D3" type="Sprite2D" parent="Container/HBoxContainer/VBoxContainer/Slimes3"]
+position = Vector2(753, 6)
+scale = Vector2(3, 3)
+texture = ExtResource("3_icr1p")
+region_enabled = true
+region_rect = Rect2(35, 35, 10, 10)
 
-[node name="Potion" type="Panel" parent="."]
-offset_left = 770.0
-offset_top = -212.0
-offset_right = 928.0
-offset_bottom = -192.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
-metadata/_edit_group_ = true
+[node name="Drown" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+text = "* Also drowning will make Ceto lose one heart, and 1000 points too!"
 
-[node name="Background" type="ColorRect" parent="Potion"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.905882, 0.196078, 0.466667, 1)
+[node name="GameOver" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+text = "* Zero hearts means Game Over :("
 
-[node name="Label" type="Label" parent="Potion"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
-theme_override_fonts/font = ExtResource("1_755v1")
-theme_override_font_sizes/font_size = 8
-text = "You found the potion!"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Croq" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+text = "* Colllect 1 croquette to score 10 points."
+
+[node name="Sprite2D2" type="Sprite2D" parent="Container/HBoxContainer/VBoxContainer/Croq"]
+position = Vector2(541, 8)
+scale = Vector2(3, 3)
+texture = ExtResource("4_2s27y")
+region_enabled = true
+region_rect = Rect2(3, 3, 10, 10)
+
+[node name="CroqAll" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+text = "* Colllect all croquettes to gain 1 heart and score 200 points."
+
+[node name="GiftBox" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+text = "* Touch gitf boxes to spawn shrooms."
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/HBoxContainer/VBoxContainer/GiftBox"]
+position = Vector2(944, 30)
+scale = Vector2(3, 3)
+texture = ExtResource("1_uniej")
+region_enabled = true
+region_rect = Rect2(0, 32, 16, 16)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Container/HBoxContainer/VBoxContainer/GiftBox"]
+position = Vector2(944, -10)
+scale = Vector2(3, 3)
+texture = ExtResource("3_icr1p")
+region_enabled = true
+region_rect = Rect2(35, 3, 10, 10)
+
+[node name="GiftBox2" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+text = "* Shrooms disappear when they touch a slime, water or after 12 seconds."
+
+[node name="Shroom" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+text = "* Push a shroom to destroy a slime and score 100 points."
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/HBoxContainer/VBoxContainer/Shroom"]
+position = Vector2(944, 37)
+rotation = 0.785397
+scale = Vector2(3, 3)
+texture = ExtResource("3_icr1p")
+region_enabled = true
+region_rect = Rect2(35, 3, 10, 10)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Container/HBoxContainer/VBoxContainer/Shroom"]
+position = Vector2(880, 26)
+scale = Vector2(3, 3)
+texture = ExtResource("5_6qaku")
+region_enabled = true
+region_rect = Rect2(64, 200, 24, 20)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Container/HBoxContainer/VBoxContainer/Shroom"]
+position = Vector2(984, 21)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_2f3er")
+animation = &"melt"
+autoplay = "melt"
+
+[node name="Shroom2" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+text = "* Sometimes it happens that by destroying a slime you find a heart!"
+
+[node name="Box" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+text = "* If a shroom gets stuck or lost, touch the gift box twice to spawn a new shroom."
+
+[node name="Box2" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+text = "* Sometimes you need to push a shroom with caution. Use the PAW command for that."
+
+[node name="Pillow" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+text = "* There's one locked box in every garden. Destroy all slimes to unlock it."
+
+[node name="Sprite2D3" type="Sprite2D" parent="Container/HBoxContainer/VBoxContainer/Pillow"]
+position = Vector2(963, 67)
+scale = Vector2(3, 3)
+texture = ExtResource("1_uniej")
+region_enabled = true
+region_rect = Rect2(0, 32, 16, 16)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Container/HBoxContainer/VBoxContainer/Pillow"]
+position = Vector2(963, 27)
+scale = Vector2(3, 3)
+texture = ExtResource("6_p8y7h")
+region_rect = Rect2(0, 32, 16, 16)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Container/HBoxContainer/VBoxContainer/Pillow"]
+position = Vector2(971, 11)
+scale = Vector2(3, 3)
+texture = ExtResource("5_6qaku")
+region_enabled = true
+region_rect = Rect2(230, 142, 23, 14)
+
+[node name="Pillow2" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+text = "* Touch the unlocked box to spawn the red pillow."
+
+[node name="Pillow3" type="Label" parent="Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.568627, 1)
+text = "* Sleep on it to complete the garden and score 1000 points."
+
+[node name="spacer" type="Label" parent="Container/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3

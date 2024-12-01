@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cupfefuvw3140"]
+[gd_scene load_steps=34 format=3 uid="uid://cupfefuvw3140"]
 
 [ext_resource type="PackedScene" uid="uid://cp681r4441wcw" path="res://scenes/player.tscn" id="1_j1nep"]
 [ext_resource type="PackedScene" uid="uid://duer46fg18w0l" path="res://levels/level_01-march-day.tscn" id="2_wkj61"]
@@ -24,6 +24,8 @@
 [ext_resource type="AudioStream" uid="uid://75j5o3ux7jpm" path="res://assets/sounds/level-completed-90734.mp3" id="16_qq0ks"]
 [ext_resource type="PackedScene" uid="uid://c3ucpjbgqp1dn" path="res://scenes/score_manager.tscn" id="22_y0270"]
 [ext_resource type="PackedScene" uid="uid://dpkb5rubsq4ho" path="res://scenes/high_scores.tscn" id="23_g5soy"]
+[ext_resource type="PackedScene" uid="uid://blmx6b1qtor3b" path="res://scenes/instructions.tscn" id="25_6ci46"]
+[ext_resource type="Script" path="res://scripts/instructions.gd" id="26_k0peb"]
 
 [sub_resource type="Animation" id="Animation_dfsma"]
 length = 0.001
@@ -227,7 +229,12 @@ libraries = {
 "": SubResource("AnimationLibrary_g7emv")
 }
 
+[node name="Instructions" parent="." instance=ExtResource("25_6ci46")]
+visible = false
+script = ExtResource("26_k0peb")
+
 [connection signal="level_loaded" from="LevelsManager" to="." method="_on_level_loaded"]
 [connection signal="start_game" from="Menu" to="." method="_on_start_game"]
 [connection signal="visibility_changed" from="SettingsCanvas/SettingsMenu" to="." method="_on_settings_menu_visibility_changed"]
 [connection signal="update_clock" from="ScoreManager" to="." method="_on_score_clock_update"]
+[connection signal="visibility_changed" from="Instructions" to="." method="_on_instructions_visibility_changed"]

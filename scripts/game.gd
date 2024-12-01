@@ -13,6 +13,7 @@ extends Node2D
 @onready var audio_level_completed: AudioStreamPlayer2D = $AudioLevelCompleted
 @onready var settings_menu: Control = %SettingsMenu
 @onready var score_manager: Node2D = $ScoreManager
+@onready var instructions: CanvasLayer = $Instructions
 @onready var animation_finale: AnimationPlayer = $AnimationFinale
 
 @export var initial_level_index: int = -1
@@ -223,3 +224,10 @@ func _on_settings_menu_visibility_changed() -> void:
 func _on_score_clock_update(amount: int, display: bool):
 	var score = score_manager.update(amount)
 	propagate_call("update_score", [score, amount, display])
+
+
+func _on_instructions_visibility_changed() -> void:
+	if instructions.visible:
+		score_manager.stop_timer()
+	else:
+		score_manager.start_timer()

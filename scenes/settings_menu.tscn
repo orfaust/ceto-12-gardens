@@ -31,7 +31,7 @@ grow_vertical = 2
 
 [node name="Spacer" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 
 [node name="Title" type="Label" parent="VBoxContainer"]
@@ -128,12 +128,12 @@ theme_override_font_sizes/font_size = 24
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 
-[node name="DisplayModeCTRL" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
+[node name="DisplayModeCTRL2" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "CTRL+W"
 
-[node name="DisplayModeLabel" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
+[node name="DisplayModeLabel2" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "set Window mode"
@@ -157,6 +157,16 @@ text = "CTRL+M"
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "toggle Music"
+
+[node name="IntructionsCTRL" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "CTRL+I"
+
+[node name="IntructionsLabel" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "toggle Instructions"
 
 [node name="HighScoresCTRL" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
