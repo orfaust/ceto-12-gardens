@@ -1,5 +1,5 @@
 # Ceto and the 12 Secret Gardens
-Platformer built with Godot Engine.
+Platformer built with Godot Engine (version 4.3).
 Developed during November 2024 for itch.io's [Game Off 2024](https://itch.io/jam/game-off-2024)
 
 Tribute to my great friend Vincent, known to his friends as "Ceto" with whom I have been living since 2013.
