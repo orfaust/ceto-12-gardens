@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://de4mw7ng1vgu3"]
 
-[ext_resource type="Texture2D" uid="uid://c2hd627gafe1r" path="res://assets/sprites/four-seasons-tileset.png" id="1_4jti6"]
+[ext_resource type="Texture2D" uid="uid://c2hd627gafe1r" path="res://assets/sprites/four-seasons-tileset.png" id="1_g23rc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vq1gi"]
-texture = ExtResource("1_4jti6")
+texture = ExtResource("1_g23rc")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -94,7 +94,7 @@ texture = ExtResource("1_4jti6")
 1:5/0 = 0
 5:5/0 = 0
 6:5/0 = 0
-6:5/0/modulate = Color(1, 1, 1, 0.733333)
+6:5/0/modulate = Color(1, 1, 1, 0.588235)
 7:5/0 = 0
 8:5/0 = 0
 0:6/0 = 0
