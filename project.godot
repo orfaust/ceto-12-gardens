@@ -33,7 +33,7 @@ Fonts by Jayvee Enaguas (https://www.dafont.com/pixel-operator.font)"
 config/version="1.0"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
