@@ -39,8 +39,10 @@ func _process(_delta: float) -> void:
 		print(player_camera.zoom)
 		if player_camera.zoom.x == 2:
 			player_camera_zoom.play("zoom_in")
+			score_manager.set_normal_clock()
 		elif player_camera.zoom.x == 3:
 			player_camera_zoom.play("zoom_out")
+			score_manager.set_faster_clock()
 
 	if Input.is_action_just_pressed("load_next_level"):
 		_load_next_level()

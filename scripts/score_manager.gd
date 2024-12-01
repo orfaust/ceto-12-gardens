@@ -44,6 +44,12 @@ func start_timer():
 func stop_timer():
 	timer.stop()
 
+func set_normal_clock():
+	timer.wait_time = 1
+
+func set_faster_clock():
+	timer.wait_time = 0.5
+
 func _on_score_timer_timeout() -> void:
 	update_clock.emit(prizes.clock, false)
 
