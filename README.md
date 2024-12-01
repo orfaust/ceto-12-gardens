@@ -2,6 +2,8 @@
 Platformer built with Godot Engine (version 4.3).
 Developed during November 2024 for itch.io's [Game Off 2024](https://itch.io/jam/game-off-2024)
 
+[Download here](https://orfaust.itch.io/ceto-12-gardens)
+
 Tribute to my great friend Vincent, known to his friends as "Ceto" with whom I have been living since 2013.
 
 The game takes place across 12 gardens, one for each month of the year.
