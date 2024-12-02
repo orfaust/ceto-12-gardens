@@ -15,9 +15,10 @@ var coins_left: int
 var slimes_left: int
 
 func _ready() -> void:
-	slimes.hide()
 	slimes_left = slimes.get_children().size()
+
 	for slime in slimes.get_children():
+		slime.hide()
 		slime.is_dead.connect(_on_slime_killed)
 
 	coins_left = coins.get_children().size()
@@ -41,10 +42,6 @@ func _process(_delta: float) -> void:
 func initialize_elements():
 	slimes_updated.emit(slimes_left, false)
 	coins_updated.emit(coins_left, false)
-
-func player_has_drank_potion():
-	slimes.show()
-
 
 func _on_slime_killed():
 	slimes_left -= 1

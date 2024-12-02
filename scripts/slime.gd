@@ -47,7 +47,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 		_: print("unhandled body entered slime: ", bodyName)
 
+func player_has_drank_potion():
+	show()
+
 func die():
+	show()
 	is_alive = false
 	is_dead.emit()
 	dead_sound.play()
