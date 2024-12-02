@@ -22,6 +22,7 @@ var prizes = {
 
 func _ready() -> void:
 	high_scores.visibility_changed.connect(update_list)
+	high_scores.save_pressed.connect(save_score)
 
 	#test score prompt
 	#player_score = 250
@@ -118,7 +119,6 @@ func prompt_alias():
 	if not player_score > 0: return
 
 	high_scores.show_prompt(player_score)
-	high_scores.save_pressed.connect(save_score)
 
 func save_score(alias: String):
 	alias = alias.trim_prefix(" ").trim_suffix(" ")
