@@ -15,11 +15,15 @@ extends Node2D
 @onready var sandDisabled: Sprite2D = $StaticBody2D/SandDisabled
 @onready var clayDisabled: Sprite2D = $StaticBody2D/ClayDisabled
 @onready var stoneDisabled: Sprite2D = $StaticBody2D/StoneDisabled
+@onready var progress_bar: ProgressBar = $ProgressBar
+@onready var progress_timer: Timer = $ProgressBar/ProgressTimer
 
 var disabled = false
-var currentGift: Node2D
+var current_gift: Node2D
 
 func _ready() -> void:
+	progress_bar.hide()
+
 	if terrain == "sand":
 		sandEnabled.show()
 		spriteDisabled = sandDisabled
@@ -31,8 +35,8 @@ func _ready() -> void:
 		spriteDisabled = stoneDisabled
 
 func _on_body_entered(_body: Node2D) -> void:
-	if currentGift and currentGift.has_method("respawn"):
-		currentGift.respawn()
+	if current_gift and current_gift.has_method("respawn"):
+		current_gift.respawn()
 
 	if disabled: return
 
@@ -51,22 +55,26 @@ func _on_body_entered(_body: Node2D) -> void:
 
 
 func spawn_gift():
-	if currentGift:
-		currentGift.destroy()
+	if current_gift:
+		current_gift.destroy()
 
 	disable()
 
-	currentGift = giftScene.instantiate()
-	add_child(currentGift)
+	current_gift = giftScene.instantiate()
+	add_child(current_gift)
 
-	if currentGift.has_signal("destroyed"):
-		currentGift.destroyed.connect(enable, CONNECT_ONE_SHOT)
+	if "MAX_DURATION" in current_gift:
+		show_progress()
+
+	if current_gift.has_signal("destroyed"):
+		current_gift.destroyed.connect(enable, CONNECT_ONE_SHOT)
 
 
 func enable():
 	if not disabled: return
 
-	currentGift = null
+	progress_bar.hide()
+	current_gift = null
 	disabled = false
 	spriteDisabled.hide()
 	animationPlayer.play("push")
@@ -76,3 +84,12 @@ func disable():
 
 	disabled = true
 	spriteDisabled.show()
+
+func show_progress():
+	progress_bar.max_value = current_gift.MAX_DURATION
+	progress_bar.value = current_gift.MAX_DURATION
+	progress_bar.show()
+	progress_timer.start()
+
+func update_progress():
+	progress_bar.value -= 1

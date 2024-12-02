@@ -9,6 +9,7 @@ const RESPAWN_INTERVAL: float = 0
 
 func _ready() -> void:
 	audio_popup.play()
+
 	await get_tree().create_timer(MAX_DURATION).timeout
 	destroy()
 
