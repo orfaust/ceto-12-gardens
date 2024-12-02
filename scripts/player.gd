@@ -279,7 +279,7 @@ func paw() -> bool:
 	paw_collision_right.disabled = true
 
 	# can't paw when there's something behind
-	if ray_cast_behind.is_colliding():
+	if ray_cast_ahead.is_colliding() and ray_cast_behind.is_colliding():
 		return false
 
 	if not Input.is_action_pressed("paw"):
