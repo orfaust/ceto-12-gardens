@@ -17,7 +17,7 @@ signal is_done_walking_to()
 @onready var audio_gain_health: AudioStreamPlayer2D = $AudioGainHealth
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 @onready var audio_licking: AudioStreamPlayer2D = $AudioLicking
-
+@onready var coyote_jump_timer: Timer = $CoyoteJumpTimer
 @onready var paw_collision_right: CollisionShape2D = $PawCollisionRight
 @onready var paw_collision_left: CollisionShape2D = $PawCollisionLeft
 
@@ -64,6 +64,8 @@ func _physics_process(delta:float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+	var was_on_floor = is_on_floor()
+
 	var direction: float = 0
 
 	if is_locked:
@@ -71,9 +73,10 @@ func _physics_process(delta:float) -> void:
 	else:
 		# Handle inputs
 		if Input.is_action_just_pressed("jump"):
-			if is_on_floor():
+			if is_on_floor() or not coyote_jump_timer.is_stopped():
 				has_double_jumped = false
 				jump()
+				was_on_floor = false
 			elif ray_cast_ahead.is_colliding():
 				double_jump()
 			else:
@@ -121,8 +124,12 @@ func _physics_process(delta:float) -> void:
 			animated_sprite.stop()
 			is_done_walking_to.emit()
 
-
 	move_and_slide()
+
+	var just_left_ledge = was_on_floor and not is_on_floor()
+	if just_left_ledge:
+		coyote_jump_timer.start()
+		#print("coyote start")
 
 func turn_right():
 	animated_sprite.flip_h = false
@@ -141,6 +148,8 @@ func calculate_jump_velocity() -> float:
 	return - jumpVelocity - jumpFactor * currentSpeed
 
 func jump():
+	coyote_jump_timer.stop()
+
 	velocity.y = calculate_jump_velocity()
 	#print(velocity.y)
 	audio_jump.pitch_scale = 1
