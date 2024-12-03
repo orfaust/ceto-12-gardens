@@ -31,7 +31,7 @@ var current_weapon = null
 
 # movement params
 @export var acceleration: float = 8
-@export var sliding: float = 10
+@export var sliding: float = 5 #10
 @export var groundFriction: float = 0.5
 @export var airFriction: float = 0.95
 @export var jumpVelocity: float = 280.0
