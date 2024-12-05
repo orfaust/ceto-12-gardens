@@ -273,7 +273,7 @@ giftScene = ExtResource("12_6maa7")
 terrain = "stone"
 
 [node name="MushroomBox6" parent="Boxes" instance=ExtResource("11_qja0f")]
-position = Vector2(-464, -56)
+position = Vector2(-464, -48)
 rotation = -0.785397
 giftScene = ExtResource("12_6maa7")
 terrain = "stone"
