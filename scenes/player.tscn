@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cp681r4441wcw"]
+[gd_scene load_steps=55 format=3 uid="uid://cp681r4441wcw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_gheme"]
 [ext_resource type="Texture2D" uid="uid://c1gr2uskfw6ee" path="res://assets/sprites/ceto.png" id="2_nmodj"]
@@ -6,19 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://dgwoa8ehxm2mw" path="res://assets/sounds/hurt.wav" id="5_75e0j"]
 [ext_resource type="AudioStream" uid="uid://b2u3vgwb70yb" path="res://assets/sounds/catlickingmilk-2.mp3" id="6_p70mp"]
 [ext_resource type="AudioStream" uid="uid://bj5smmeolqr16" path="res://assets/sounds/item-pick-up-38258.mp3" id="6_ymtna"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wexg5"]
-radius = 2.23205
-height = 7.19615
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0x1kh"]
-radius = 6.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2itjo"]
-size = Vector2(6, 2.5)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_svhrx"]
-radius = 2.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fxb6a"]
 atlas = ExtResource("2_nmodj")
@@ -338,6 +325,16 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wexg5"]
+radius = 2.23205
+height = 7.19615
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0x1kh"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_svhrx"]
+radius = 2.0
+
 [sub_resource type="Animation" id="Animation_o6dd3"]
 length = 0.001
 tracks/0/type = "value"
@@ -458,6 +455,12 @@ collision_layer = 2
 script = ExtResource("1_gheme")
 walkingMaxSpeed = 200.0
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_7pjv2")
+animation = &"idle"
+autoplay = "idle"
+
 [node name="RayCastAhead" type="RayCast2D" parent="."]
 position = Vector2(0, -4)
 target_position = Vector2(10, 0)
@@ -487,10 +490,6 @@ disabled = true
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_0x1kh")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1.25)
-shape = SubResource("RectangleShape2D_2itjo")
-
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 position = Vector2(3, -2)
 shape = SubResource("CircleShape2D_svhrx")
@@ -498,12 +497,6 @@ shape = SubResource("CircleShape2D_svhrx")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
 position = Vector2(-3, -2)
 shape = SubResource("CircleShape2D_svhrx")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -12)
-sprite_frames = SubResource("SpriteFrames_7pjv2")
-animation = &"idle"
-autoplay = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

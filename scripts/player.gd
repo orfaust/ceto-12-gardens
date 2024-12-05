@@ -20,7 +20,7 @@ signal is_done_walking_to()
 @onready var paw_collision_right: CollisionShape2D = $PawCollisionRight
 @onready var paw_collision_left: CollisionShape2D = $PawCollisionLeft
 @onready var coyote_jump_timer: Timer = $CoyoteJumpTimer
-@onready var jump_timer: Timer = $BufferJumpTimer
+@onready var jump_buffer_timer: Timer = $BufferJumpTimer
 
 
 const MAX_HEALTH = 9
@@ -79,7 +79,7 @@ func _physics_process(delta:float) -> void:
 		animated_sprite.stop()
 	else:
 		# Handle inputs
-		if Input.is_action_pressed("jump") and jump_timer.is_stopped():
+		if Input.is_action_pressed("jump") and jump_buffer_timer.is_stopped():
 			if is_on_floor() or not coyote_jump_timer.is_stopped():
 				has_double_jumped = false
 				jump()
@@ -156,7 +156,7 @@ func calculate_jump_velocity() -> float:
 
 func jump():
 	coyote_jump_timer.stop()
-	jump_timer.start()
+	jump_buffer_timer.start()
 
 	velocity.y = calculate_jump_velocity()
 	#print(velocity.y)
@@ -167,7 +167,7 @@ func double_jump():
 	if has_double_jumped:
 		return
 
-	jump_timer.start()
+	jump_buffer_timer.start()
 	has_double_jumped = true
 	velocity.y = calculate_jump_velocity() * doubleJumpFactor
 	audio_jump.pitch_scale = 1.5
