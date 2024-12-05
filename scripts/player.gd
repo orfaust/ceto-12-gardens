@@ -17,9 +17,10 @@ signal is_done_walking_to()
 @onready var audio_gain_health: AudioStreamPlayer2D = $AudioGainHealth
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 @onready var audio_licking: AudioStreamPlayer2D = $AudioLicking
-@onready var coyote_jump_timer: Timer = $CoyoteJumpTimer
 @onready var paw_collision_right: CollisionShape2D = $PawCollisionRight
 @onready var paw_collision_left: CollisionShape2D = $PawCollisionLeft
+@onready var coyote_jump_timer: Timer = $CoyoteJumpTimer
+@onready var jump_timer: Timer = $BufferJumpTimer
 
 
 const MAX_HEALTH = 9
@@ -31,13 +32,14 @@ var current_weapon = null
 
 # movement params
 @export var acceleration: float = 8
-@export var sliding: float = 5 #10
+@export var sliding: float = 5
 @export var groundFriction: float = 0.5
 @export var airFriction: float = 0.95
 @export var jumpVelocity: float = 280.0
 @export var jumpFactor: float = 0.25
 @export var doubleJumpFactor: float = 0.9
 @export var walkingMaxSpeed: float = 150
+#@export var runningMaxSpeed: float = 250
 @export var fightingMaxSpeed: float = 75.0
 var currentSpeed:float = 0.0
 var max_speed: float = walkingMaxSpeed
@@ -56,6 +58,11 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("drink_potion"):
 		has_drank_potion.emit()
 
+	#if Input.is_action_pressed("run"):
+		#max_speed = runningMaxSpeed
+	#else:
+		#max_speed = walkingMaxSpeed
+
 func _physics_process(delta:float) -> void:
 	if is_sleeping or not is_alive:
 		return
@@ -72,7 +79,7 @@ func _physics_process(delta:float) -> void:
 		animated_sprite.stop()
 	else:
 		# Handle inputs
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_pressed("jump") and jump_timer.is_stopped():
 			if is_on_floor() or not coyote_jump_timer.is_stopped():
 				has_double_jumped = false
 				jump()
@@ -149,6 +156,7 @@ func calculate_jump_velocity() -> float:
 
 func jump():
 	coyote_jump_timer.stop()
+	jump_timer.start()
 
 	velocity.y = calculate_jump_velocity()
 	#print(velocity.y)
@@ -159,6 +167,7 @@ func double_jump():
 	if has_double_jumped:
 		return
 
+	jump_timer.start()
 	has_double_jumped = true
 	velocity.y = calculate_jump_velocity() * doubleJumpFactor
 	audio_jump.pitch_scale = 1.5

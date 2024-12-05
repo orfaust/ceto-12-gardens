@@ -456,15 +456,16 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_gheme")
+walkingMaxSpeed = 200.0
 
 [node name="RayCastAhead" type="RayCast2D" parent="."]
 position = Vector2(0, -4)
-target_position = Vector2(9, 0)
+target_position = Vector2(10, 0)
 
 [node name="RayCastBehind" type="RayCast2D" parent="."]
 position = Vector2(0, -4)
 rotation = -3.14159
-target_position = Vector2(15, -3.79086e-05)
+target_position = Vector2(16, -4.05312e-05)
 
 [node name="RayCastAbove" type="RayCast2D" parent="."]
 position = Vector2(0, -15)
@@ -531,4 +532,8 @@ bus = &"EXF"
 
 [node name="CoyoteJumpTimer" type="Timer" parent="."]
 wait_time = 0.1
+one_shot = true
+
+[node name="BufferJumpTimer" type="Timer" parent="."]
+wait_time = 0.25
 one_shot = true
