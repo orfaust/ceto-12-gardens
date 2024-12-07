@@ -168,6 +168,15 @@ autoplay = "waves"
 [node name="Coin" parent="Coins" instance=ExtResource("5_pwc6q")]
 position = Vector2(136, 40)
 
+[node name="Coin8" parent="Coins" instance=ExtResource("5_pwc6q")]
+position = Vector2(48, 88)
+
+[node name="Coin9" parent="Coins" instance=ExtResource("5_pwc6q")]
+position = Vector2(64, 88)
+
+[node name="Coin10" parent="Coins" instance=ExtResource("5_pwc6q")]
+position = Vector2(80, 88)
+
 [node name="Coin3" parent="Coins" instance=ExtResource("5_pwc6q")]
 position = Vector2(-456, 0)
 
