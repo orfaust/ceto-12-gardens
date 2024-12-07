@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjc4nupje3yv2"]
+[gd_scene load_steps=16 format=3 uid="uid://cjc4nupje3yv2"]
 
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_kc62e"]
 [ext_resource type="Texture2D" uid="uid://c1xy35pjys0ck" path="res://assets/sprites/slime_purple.png" id="1_xisne"]
@@ -19,6 +19,14 @@ region = Rect2(48, 24, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2nwto"]
 atlas = ExtResource("1_xisne")
 region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uebux"]
+atlas = ExtResource("1_xisne")
+region = Rect2(48, 54, 24, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fj6b"]
+atlas = ExtResource("1_xisne")
+region = Rect2(48, 48, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fe1uq"]
 atlas = ExtResource("1_xisne")
@@ -57,6 +65,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_uebux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fj6b")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_fe1uq")
 }, {
 "duration": 1.0,
@@ -64,6 +83,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b160o")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbmdc")
+}, {
+"duration": 1.0,
+"texture": null
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qbmdc")
@@ -90,7 +118,10 @@ target_position = Vector2(-8, 0)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_4rayw")
+animation = &"melt"
 autoplay = "default"
+frame = 6
+frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 collision_mask = 2

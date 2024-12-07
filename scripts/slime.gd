@@ -40,6 +40,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	match bodyName:
 		"Player":
 			body.take_damage(1, self)
+			sprite.play("hurt")
+			await sprite.animation_finished
+			sprite.play("default")
 
 		"Mushroom":
 			body.destroy()
@@ -60,8 +63,11 @@ func die():
 	await sprite.animation_finished
 	
 	if gift_scene:
-		var gift = gift_scene.instantiate()
-		gift.position = global_position
-		get_parent().add_child(gift)
+		spawn_object(gift_scene)
 
 	queue_free()
+
+func spawn_object(scene: PackedScene):
+	var gift = scene.instantiate()
+	gift.position = global_position
+	get_parent().add_child(gift)
