@@ -456,7 +456,7 @@ script = ExtResource("1_gheme")
 walkingMaxSpeed = 200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -12)
+position = Vector2(1, -12)
 sprite_frames = SubResource("SpriteFrames_7pjv2")
 animation = &"idle"
 autoplay = "idle"
@@ -487,16 +487,23 @@ shape = SubResource("CapsuleShape2D_wexg5")
 disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7)
+position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_0x1kh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(1, -7)
+shape = SubResource("CircleShape2D_0x1kh")
+disabled = true
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 position = Vector2(3, -2)
 shape = SubResource("CircleShape2D_svhrx")
+disabled = true
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
 position = Vector2(-3, -2)
 shape = SubResource("CircleShape2D_svhrx")
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
