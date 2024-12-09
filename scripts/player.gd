@@ -22,34 +22,29 @@ signal is_done_walking_to()
 @onready var coyote_jump_timer: Timer = $CoyoteJumpTimer
 @onready var jump_buffer_timer: Timer = $BufferJumpTimer
 
-
+# health
 const MAX_HEALTH = 9
 const INITIAL_HEALTH = 2
 var health = INITIAL_HEALTH
-var walk_to = 0
-
-var current_weapon = null
 
 # movement params
-@export var acceleration: float = 8
-@export var sliding: float = 5
-@export var groundFriction: float = 0.5
-@export var airFriction: float = 0.95
-@export var jumpVelocity: float = 280.0
-@export var jumpFactor: float = 0.25
-@export var doubleJumpFactor: float = 0.9
-@export var walkingMaxSpeed: float = 150
-#@export var runningMaxSpeed: float = 250
-@export var fightingMaxSpeed: float = 75.0
-var currentSpeed:float = 0.0
-var max_speed: float = walkingMaxSpeed
+const acceleration: float = 360
+const ground_friction: float = 0.65
+const air_friction: float = 0.65
+const jump_velocity: float = 280.0
+const jump_factor: float = 0.25
+const double_jump_factor: float = 0.88
+const max_speed: float = 150
 
 # player state
 var is_alive:bool = true
 var is_vulnerable:bool = true
 var is_locked:bool = false
-var has_double_jumped:bool = false
 var is_sleeping:bool = false
+var walking_to = 0
+
+var has_double_jumped:bool = false
+var currentSpeed:float = 0.0
 
 func _ready() -> void:
 	health_changed.emit.call_deferred(health, 0)
@@ -57,11 +52,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("drink_potion"):
 		has_drank_potion.emit()
-
-	#if Input.is_action_pressed("run"):
-		#max_speed = runningMaxSpeed
-	#else:
-		#max_speed = walkingMaxSpeed
 
 func _physics_process(delta:float) -> void:
 	if is_sleeping or not is_alive:
@@ -91,31 +81,27 @@ func _physics_process(delta:float) -> void:
 
 		direction = Input.get_axis("move left", "move right")
 
-	#var real_speed = SPEED
-	if not is_on_floor():
-		#real_speed = SPEED * 0.8
-		currentSpeed *= airFriction
-
 	if direction > 0:
 		turn_right()
 	elif direction < 0:
 		turn_left();
 
 	if direction and not ray_cast_ahead.is_colliding():
-		currentSpeed = move_toward(currentSpeed, max_speed, acceleration)
-
-		velocity.x = move_toward(velocity.x, direction * currentSpeed, currentSpeed / sliding)
+		velocity.x = move_toward(velocity.x, max_speed * direction, delta * acceleration)
 	else:
-		currentSpeed *= groundFriction
-		velocity.x = move_toward(velocity.x, 0, max_speed / sliding)
-		#velocity.x = move_toward(velocity.x, 0, currentSpeed)
+		if is_on_floor():
+			velocity.x *= ground_friction
+		else:
+			velocity.x *= air_friction
+	
+	currentSpeed = abs(velocity.x)
 
 	# Play animations
 	if is_on_floor():
 		if ray_cast_above.is_colliding():
 			animated_sprite.play("crouch")
 		else:
-			if direction == 0 and walk_to == 0:
+			if direction == 0 and walking_to == 0:
 				if not paw():
 					animated_sprite.play("idle")
 			else:
@@ -123,11 +109,11 @@ func _physics_process(delta:float) -> void:
 	else:
 		animated_sprite.play("jump")
 
-	if walk_to:
-		position.x = move_toward(position.x, walk_to, 1)
+	if walking_to:
+		position.x = move_toward(position.x, walking_to, 1)
 
-		if position.x == walk_to:
-			walk_to = 0
+		if position.x == walking_to:
+			walking_to = 0
 			animated_sprite.stop()
 			is_done_walking_to.emit()
 
@@ -152,7 +138,7 @@ func turn_left():
 
 
 func calculate_jump_velocity() -> float:
-	return - jumpVelocity - jumpFactor * currentSpeed
+	return - jump_velocity - jump_factor * currentSpeed
 
 func jump():
 	coyote_jump_timer.stop()
@@ -169,7 +155,7 @@ func double_jump():
 
 	jump_buffer_timer.start()
 	has_double_jumped = true
-	velocity.y = calculate_jump_velocity() * doubleJumpFactor
+	velocity.y = calculate_jump_velocity() * double_jump_factor
 	audio_jump.pitch_scale = 1.5
 	audio_jump.play()
 
@@ -271,9 +257,9 @@ func setup_for_new_level(new_position: Vector2):
 
 
 func drink(target_x):
-	walk_to = target_x
+	walking_to = target_x
 
-	if walk_to > position.x:
+	if walking_to > position.x:
 		turn_right()
 	else:
 		turn_left()
