@@ -329,11 +329,11 @@ animations = [{
 radius = 2.23205
 height = 7.19615
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3qi2"]
+size = Vector2(8.48527, 8.48529)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_0x1kh"]
 radius = 6.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_svhrx"]
-radius = 2.0
 
 [sub_resource type="Animation" id="Animation_o6dd3"]
 length = 0.001
@@ -485,24 +485,14 @@ rotation = -2.09439
 shape = SubResource("CapsuleShape2D_wexg5")
 disabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="HeadCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-2.04891e-07, -8)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_n3qi2")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_0x1kh")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(1, -7)
-shape = SubResource("CircleShape2D_0x1kh")
-disabled = true
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(3, -2)
-shape = SubResource("CircleShape2D_svhrx")
-disabled = true
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
-position = Vector2(-3, -2)
-shape = SubResource("CircleShape2D_svhrx")
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
