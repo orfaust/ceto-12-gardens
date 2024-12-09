@@ -79,7 +79,7 @@ func _physics_process(delta:float) -> void:
 			else:
 				pass
 
-		direction = Input.get_axis("move left", "move right")
+		direction = Input.get_axis("move_left", "move_right")
 
 	if direction > 0:
 		turn_right()
