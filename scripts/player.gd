@@ -34,7 +34,7 @@ const air_friction: float = 0.65
 const jump_velocity: float = 280.0
 const jump_factor: float = 0.25
 const double_jump_factor: float = 0.88
-const max_speed: float = 150
+var max_speed: float = 136
 
 # player state
 var is_alive:bool = true
