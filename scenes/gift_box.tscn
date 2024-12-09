@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bw1mv4iofpo4r"]
+[gd_scene load_steps=11 format=3 uid="uid://bw1mv4iofpo4r"]
 
 [ext_resource type="Script" path="res://scripts/gift_box.gd" id="1_03l4n"]
-[ext_resource type="Texture2D" uid="uid://c2hd627gafe1r" path="res://assets/sprites/four-seasons-tileset.png" id="2_anvwh"]
-[ext_resource type="Texture2D" uid="uid://b1861ww6g6vqc" path="res://addons/fabimakesgames.embed_game/config/four-seasons-tileset.png" id="2_o5kdr"]
+[ext_resource type="Texture2D" uid="uid://c2hd627gafe1r" path="res://assets/sprites/four-seasons-tileset.png" id="2_o5kdr"]
 [ext_resource type="AudioStream" uid="uid://dgwoa8ehxm2mw" path="res://assets/sounds/hurt.wav" id="3_ye0wg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6rne"]
@@ -72,7 +71,7 @@ position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_lknd7")
 
 [node name="SoilEnabled" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("2_anvwh")
+texture = ExtResource("2_o5kdr")
 region_enabled = true
 region_rect = Rect2(0, 32, 16, 16)
 
